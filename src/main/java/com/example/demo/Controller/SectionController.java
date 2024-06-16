@@ -1,6 +1,7 @@
 package com.example.demo.Controller;
 
 import com.example.demo.entity.Section;
+import com.example.demo.entity.IndexBasedRead;
 import com.example.demo.repo.SectionRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;

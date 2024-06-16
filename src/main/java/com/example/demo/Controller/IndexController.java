@@ -1,5 +1,4 @@
 package com.example.demo.Controller;
-
 import com.example.demo.entity.IndexItem;
 import org.springframework.web.bind.annotation.*;
 
@@ -8,11 +7,10 @@ import java.util.List;
 
 @RestController
 @CrossOrigin(origins = "http://localhost:3000")
-@RequestMapping("/index")
-//@CrossOrigin("*")
+@RequestMapping
 public class IndexController {
 
-    @GetMapping
+    @GetMapping("/index")
     public List<IndexItem> getIndex(@RequestParam String key) {
         // Example data for index items
         if(key.equals("excel1002")) {
