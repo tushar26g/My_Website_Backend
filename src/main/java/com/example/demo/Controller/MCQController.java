@@ -14,6 +14,7 @@ public class MCQController {
 
     @GetMapping("/{key}")
     public MCQ getMCQByKey(@PathVariable String key) {
+        System.out.println("Tushar");
         return mcqRepository.findByKey(key);
     }
 }
