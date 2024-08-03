@@ -1,10 +1,17 @@
 package com.example.demo.entity;
+
 import java.util.List;
 
 public class IndexForIndexRead {
     private String moduleTitle;
     private List<Chapter> chapters;
 
+    public IndexForIndexRead(String moduleTitle, List<Chapter> chapters) {
+        this.moduleTitle = moduleTitle;
+        this.chapters = chapters;
+    }
+
+    // Getters and Setters
     public String getModuleTitle() {
         return moduleTitle;
     }
@@ -21,17 +28,16 @@ public class IndexForIndexRead {
         this.chapters = chapters;
     }
 
-    public IndexForIndexRead(String moduleTitle, List<Chapter> chapters) {
-        this.moduleTitle = moduleTitle;
-        this.chapters = chapters;
-    }
-
-    // Getters and Setters
-
     public static class Chapter {
         private String chapterTitle;
         private List<Unit> units;
 
+        public Chapter(String chapterTitle, List<Unit> units) {
+            this.chapterTitle = chapterTitle;
+            this.units = units;
+        }
+
+        // Getters and Setters
         public String getChapterTitle() {
             return chapterTitle;
         }
@@ -48,24 +54,16 @@ public class IndexForIndexRead {
             this.units = units;
         }
 
-        public Chapter(String chapterTitle, List<Unit> units) {
-            this.chapterTitle = chapterTitle;
-            this.units = units;
-        }
-
-        // Getters and Setters
-
         public static class Unit {
             private String unitTitle;
-            private List<String> topics;
+            private List<IndexItem> topics;
 
-            public Unit(String unitTitle, List<String> topics) {
+            public Unit(String unitTitle, List<IndexItem> topics) {
                 this.unitTitle = unitTitle;
                 this.topics = topics;
             }
 
             // Getters and Setters
-
             public String getUnitTitle() {
                 return unitTitle;
             }
@@ -74,11 +72,11 @@ public class IndexForIndexRead {
                 this.unitTitle = unitTitle;
             }
 
-            public List<String> getTopics() {
+            public List<IndexItem> getTopics() {
                 return topics;
             }
 
-            public void setTopics(List<String> topics) {
+            public void setTopics(List<IndexItem> topics) {
                 this.topics = topics;
             }
         }

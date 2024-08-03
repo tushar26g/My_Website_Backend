@@ -13,7 +13,6 @@ import java.util.List;
 public class MCQIndexController {
     @GetMapping("/mcqindex")
     public ResponseEntity<List<MCQIndex>> getIndex(@RequestParam String key) {
-        System.out.println("Anushka");
         List<MCQIndex> index = List.of(
                 new MCQIndex("Module 1", List.of(
                         new MCQIndex.MCQChapter("Theoretical Framework", List.of(
