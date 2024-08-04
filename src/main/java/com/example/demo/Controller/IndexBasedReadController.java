@@ -21,11 +21,14 @@ public class IndexBasedReadController {
                         new IndexForIndexRead.Chapter("Theoretical Framework", Arrays.asList(
                                 new IndexForIndexRead.Chapter.Unit("MEANING AND SCOPE OF ACCOUNTING", Arrays.asList(
                                         new IndexItem("Accounting1001", "INTRODUCTION"),
-                                        new IndexItem("Accounting1002", "Meaning_of_Accounting"),
+                                        new IndexItem("Accounting1002", "Meaning of Accounting"),
                                         new IndexItem("Accounting1003", "EVOLUTION OF ACCOUNTING AS A SOCIAL SCIENCE"),
                                         new IndexItem("Accounting1004", "OBJECTIVES OF ACCOUNTING"),
                                         new IndexItem("Accounting1005", "FUNCTIONS OF ACCOUNTING"),
-                                        new IndexItem("Accounting1006", "BOOK-KEEPING")
+                                        new IndexItem("Accounting1006", "BOOK-KEEPING"),
+                                        new IndexItem("Accounting1007","Distinction Between Book-Keeping and Accounting"),
+                                        new IndexItem("Accounting1008","Sub-Fields of Accounting"),
+                                        new IndexItem("Accounting1009","Users of Accounting Information")
                                 )),
                                 new IndexForIndexRead.Chapter.Unit("Unit 2", Arrays.asList(
                                         new IndexItem("Accounting2001", "Topic 1"),
