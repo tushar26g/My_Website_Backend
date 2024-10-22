@@ -12,6 +12,7 @@ import java.util.List;
 @RestController
 @RequiredArgsConstructor
 @CrossOrigin("*")
+@RequestMapping("/public")
 public class postController {
     @Autowired
     PostRepo postRepo;

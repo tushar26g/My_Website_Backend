@@ -9,7 +9,7 @@ import java.util.List;
 
 @RestController
 @CrossOrigin(origins = "http://localhost:3000")
-@RequestMapping
+@RequestMapping("/public")
 public class MCQIndexController {
     @GetMapping("/mcqindex")
     public ResponseEntity<List<MCQIndex>> getIndex(@RequestParam String key) {

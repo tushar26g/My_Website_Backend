@@ -7,12 +7,12 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @CrossOrigin(origins = "http://localhost:3000")
-@RequestMapping("/mcqs")
+@RequestMapping("/public")
 public class MCQController {
     @Autowired
     private MCQRepository mcqRepository;
 
-    @GetMapping("/{key}")
+    @GetMapping("/mcqs/{key}")
     public MCQ getMCQByKey(@PathVariable String key) {
         return mcqRepository.findByKey(key);
     }

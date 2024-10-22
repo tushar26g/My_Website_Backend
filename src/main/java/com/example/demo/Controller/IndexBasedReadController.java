@@ -11,7 +11,7 @@ import java.util.stream.Collectors;
 
 @RestController
 @CrossOrigin(origins = "http://localhost:3000")
-@RequestMapping
+@RequestMapping("/public")
 public class IndexBasedReadController {
 
     @GetMapping("/indexBasedRead")

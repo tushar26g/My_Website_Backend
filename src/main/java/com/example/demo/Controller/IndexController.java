@@ -7,7 +7,7 @@ import java.util.List;
 
 @RestController
 @CrossOrigin(origins = "http://localhost:3000")
-@RequestMapping
+@RequestMapping("/public")
 public class IndexController {
 
     @GetMapping("/index")

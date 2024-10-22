@@ -14,13 +14,13 @@ import java.util.List;
 
 @RestController
 @CrossOrigin(origins = "http://localhost:3000") // Allow requests from your React app
-@RequestMapping("/section")
+@RequestMapping("/public")
 public class SectionController {
 
     @Autowired
     private SectionRepository sectionRepository;
 
-    @GetMapping
+    @GetMapping("/section")
     public Section getSection(@RequestParam String key) {
 //        System.out.println("Tushar");
         return sectionRepository.findByKey(key);
