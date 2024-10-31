@@ -11,6 +11,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Date;
+
 @RestController
 @CrossOrigin(origins = "http://localhost:3000")
 @RequestMapping("/public")
@@ -28,44 +30,52 @@ public class Sign {
 
     @PostMapping("/register")
     public ResponseEntity<?> registerUser(@RequestBody AuthenticationRequest request) {
-        // Check if username already exists
         if (userRepository.findByEmail(request.getEmail()) != null) {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST)
                     .body(new AuthenticationResponse("Username already exists"));
         }
 
-        // Create a new user
         User user = new User();
         user.setFirstName(request.getFirstName());
         user.setLastName(request.getLastName());
         user.setEmail(request.getEmail());
-        user.setPassword(passwordEncoder.encode(request.getPassword())); // Encode the password
+        user.setPassword(passwordEncoder.encode(request.getPassword()));
         user.setMobileNo(request.getMobileNo());
+        user.setCoins(50);  // Grant 50 coins for registration
 
-        userRepository.save(user); // Save the user to MongoDB
+        userRepository.save(user);
 
-        return ResponseEntity.ok(new AuthenticationResponse("User registered successfully"));
+        return ResponseEntity.ok(new AuthenticationResponse("User registered successfully with 50 coins"));
     }
+
 
     @PostMapping("/login")
     public ResponseEntity<?> createAuthenticationToken(@RequestBody AuthenticationRequest request) {
-        System.out.println("Enter");
         User user = userRepository.findByEmail(request.getEmail());
-        System.out.println(user);
         if (user == null) {
             return ResponseEntity.status(HttpStatus.UNAUTHORIZED)
                     .body(new AuthenticationResponse("User not found"));
         }
-        System.out.println("user found");
-        // Check if the password matches
+
         if (!passwordEncoder.matches(request.getPassword(), user.getPassword())) {
             return ResponseEntity.status(HttpStatus.UNAUTHORIZED)
                     .body(new AuthenticationResponse("Incorrect username or password"));
         }
-        System.out.println(request.getPassword()+" "+ user.getPassword());
-        // If authentication is successful, generate JWT token
-        final String jwt = jwtUtil.generateToken(user.getEmail());
-        System.out.println("End");
+
+        Date today = new Date();
+        if (user.getLastLoginDate() == null || isNewDay(user.getLastLoginDate(), today)) {
+            user.setCoins(user.getCoins() + 2);  // Add 2 coins for login if a new day
+            user.setLastLoginDate(today);
+            userRepository.save(user);  // Update user with new coin balance and last login date
+        }
+
+        String jwt = jwtUtil.generateToken(user.getEmail());
         return ResponseEntity.ok(new AuthenticationResponse(jwt));
+    }
+
+    // Helper method to check if it's a new day since the last login
+    private boolean isNewDay(Date lastLoginDate, Date currentDate) {
+        // Check if the current date and last login date are not the same day
+        return lastLoginDate == null || (currentDate.getDay() != lastLoginDate.getDay() || currentDate.getMonth() != lastLoginDate.getMonth());
     }
 }

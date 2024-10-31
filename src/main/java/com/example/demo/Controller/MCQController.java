@@ -12,8 +12,8 @@ public class MCQController {
     @Autowired
     private MCQRepository mcqRepository;
 
-    @GetMapping("/mcqs/{key}")
-    public MCQ getMCQByKey(@PathVariable String key) {
+    @GetMapping("/mcqs")
+    public MCQ getMCQByKey(@RequestParam String key) {
         return mcqRepository.findByKey(key);
     }
 }

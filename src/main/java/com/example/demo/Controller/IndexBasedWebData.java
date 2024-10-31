@@ -14,6 +14,8 @@ public class IndexBasedWebData {
 
     @GetMapping("/indexBasedWebData")
     public IndexBasedRead getSection(@RequestParam String key) {
-        return indexBasedRead.findByKey(key);
+
+        IndexBasedRead result=indexBasedRead.findByKey(key);
+        return result;
     }
 }

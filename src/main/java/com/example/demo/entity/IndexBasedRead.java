@@ -6,7 +6,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 import java.util.List;
 import java.util.Map;
 
-@Document(collection = "Accounting")
+@Document(collection = "Apptie")
 public class IndexBasedRead {
     @Id
     private String id;
