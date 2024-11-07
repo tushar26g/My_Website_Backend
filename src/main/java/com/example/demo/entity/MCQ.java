@@ -12,6 +12,8 @@ public class MCQ {
     private String id;
     private String key;
     private List<Question> questions;
+    private String next;
+    private String previous;
 }
 
 @Data
